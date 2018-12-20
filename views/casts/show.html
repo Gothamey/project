@@ -1,0 +1,173 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="path/to/javascripts/bootstrap-rating-input.min.js" type="text/javascript"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+<title>{{movie.name}}</title>
+</head>
+<body>
+   
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{movies.img_url}}" alt="{{movies.name}}">
+    <div class="card-body">
+    <h5 class="card-title"><a href="/movies/{{movies.id}}">{{movies.name}}</a></h5>
+    <p class="card-text">{{movies.story}}</p>
+    <form action="/movies/{{movies.id}}?_method=DELETE" method="post">
+        <button type="submit">Delete</button>
+    </form>
+    <br>
+    <form action="/movies/{{moviesList.id}}/edit">
+        <button type="submit">update</button>
+    </form> 
+    </div>
+</div>
+
+<form action="/movies/{{id}}" method="post">
+    <label for="input-1" class="control-label">Rate</label>
+    <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="">
+    <button type="submit">rate</button>
+</form>       
+                
+{{#casts}}
+
+<h3>Cast</h3>
+
+<div class="card" style="width: 18rem;">
+<img class="card-img-top" src="{{image}}" alt="">
+<div class="card-body">
+<h5 class="card-title"><a href="/casts/{{id}}">{{name}}</a></h5>
+<p class="card-text">{{story}}</p>
+<a href="#" class="btn btn-primary">view</a>
+</div>
+</div>
+            
+{{/casts}}
+
+<a href="/movies">View all Movies</a>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{movie.name}}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/portfolio-item.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="path/to/javascripts/bootstrap-rating-input.min.js" type="text/javascript"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+
+
+  </head>
+  <body>
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+<a class="navbar-brand" href="#">youFilm</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+    <li class="nav-item active">
+    <a class="nav-link" href="/">Homepage
+    <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/movies">Movies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/casts">Cast</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/movies/new">Add Movie</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {{#casts}}
+    <!-- Page Content -->
+    <div class="container">
+           
+      <!-- Portfolio Item Heading -->
+      <h1 class="my-4"><a href="/casts/{{id}}">{{name}}</h1>
+
+      <!-- Portfolio Item Row -->
+      <div class="row">
+
+        <div class="col-md-8">
+          <img class="img-fluid" src="{{image}}" alt="">
+        </div>
+
+        <div class="col-md-4">
+          <h3 class="my-3">Story</h3>
+          <p>{{story}}</p>
+        </div>
+
+      </div>
+      {{/casts}}
+
+      <!-- /.row -->
+
+      
+    <h3 class="my-4">Movies</h3>
+
+    <div class="row">
+
+    <div class="col-md-3 col-sm-6 mb-4">
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{movies.img_url}}" alt="">
+        <div class="card-body">
+        <h5 class="card-title"><a href="/movies/{{movies.id}}">{{movies.name}}</a></h5>
+        <p class="card-text">{{story}}</p>
+        <a href="/movies/{{movies.id}}" class="btn btn-primary">view</a>
+        </div>
+        </div>
+
+    </div>
+    </div>
+
+    </div>
+    
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; youFilm 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
